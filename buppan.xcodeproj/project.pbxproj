@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EF2CD9F722DDD0A200165729 /* tableviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tableviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF2CD9F722DDD0A200165729 /* buppan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buppan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2CD9FA22DDD0A200165729 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF2CD9FC22DDD0A200165729 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EF2CD9FF22DDD0A200165729 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		EF2CD9F822DDD0A200165729 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EF2CD9F722DDD0A200165729 /* tableviews.app */,
+				EF2CD9F722DDD0A200165729 /* buppan.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF2CD9F622DDD0A200165729 /* tableviews */ = {
+		EF2CD9F622DDD0A200165729 /* buppan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF2CDA0C22DDD0A400165729 /* Build configuration list for PBXNativeTarget "tableviews" */;
+			buildConfigurationList = EF2CDA0C22DDD0A400165729 /* Build configuration list for PBXNativeTarget "buppan" */;
 			buildPhases = (
 				EF2CD9F322DDD0A200165729 /* Sources */,
 				EF2CD9F422DDD0A200165729 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = tableviews;
+			name = buppan;
 			productName = tableviews;
-			productReference = EF2CD9F722DDD0A200165729 /* tableviews.app */;
+			productReference = EF2CD9F722DDD0A200165729 /* buppan.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EF2CD9F222DDD0A200165729 /* Build configuration list for PBXProject "tableviews" */;
+			buildConfigurationList = EF2CD9F222DDD0A200165729 /* Build configuration list for PBXProject "buppan" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF2CD9F622DDD0A200165729 /* tableviews */,
+				EF2CD9F622DDD0A200165729 /* buppan */,
 			);
 		};
 /* End PBXProject section */
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF2CD9F222DDD0A200165729 /* Build configuration list for PBXProject "tableviews" */ = {
+		EF2CD9F222DDD0A200165729 /* Build configuration list for PBXProject "buppan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF2CDA0A22DDD0A400165729 /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF2CDA0C22DDD0A400165729 /* Build configuration list for PBXNativeTarget "tableviews" */ = {
+		EF2CDA0C22DDD0A400165729 /* Build configuration list for PBXNativeTarget "buppan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF2CDA0D22DDD0A400165729 /* Debug */,

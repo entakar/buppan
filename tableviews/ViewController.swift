@@ -24,7 +24,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         // Do any additional setup after loading the view.
         textImput.delegate = self
     }
-    // 画面にタッチで呼ばれて、キーボードを閉じる
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         if (self.textImput.isFirstResponder) {
             self.textImput.resignFirstResponder()
@@ -36,48 +35,50 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         textView.text = nil
         totalCountLabel.text = nil
         textImput.text = nil
-        totalCount = 0
         totalTax = 0
+        totalCount = 0
     }
     
     @IBAction func plusAction(_ sender: Any) {
         if textImput.text != "" {
-            textImput.resignFirstResponder()
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            //トータルカウント
-            totalCount = totalCount + 1
-            totalCountLabel.text = String(totalCount) + "点"
-            totalTax = totalTax + Int(textImput.text!)!
-            totalLabel.text = formatter.string(from: totalTax as NSNumber)
-            // 一覧
-            let imputText = Int(textImput.text!)!
-            textView.text = textView.text + formatter.string(from: imputText as NSNumber)! + "\r\n"
-            // 入力エリアのクリア
-            textImput.text = nil
+            calculation(plmui: "+")
+        }
+    }
+    @IBAction func minusAction(_ sender: Any) {
+        if textImput.text != "" {
+            calculation(plmui: "-")
         }
     }
     
-    @IBAction func minusAction(_ sender: Any) {
-        if textImput.text != "" {
-            textImput.resignFirstResponder()
-
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            //トータルカウント
+    func calculation(plmui: String) {
+        textImput.resignFirstResponder()
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        //トータルカウント
+        if plmui == "+" {
+            totalCount = totalCount + 1
+        } else {
             if totalCount > 1 {
                 totalCount = totalCount - 1
             }
-            totalCountLabel.text = String(totalCount) + "点"
-            totalTax = totalTax - Int(textImput.text!)!
-            totalLabel.text = formatter.string(from: totalTax as NSNumber)
-            // 一覧
-            let imputText = Int(textImput.text!)!
-            textView.text = textView.text + "-" + formatter.string(from: imputText as NSNumber)! + "\r\n"
-            // 入力エリアのクリア
-            textImput.text = nil
         }
+        totalCountLabel.text = String(totalCount) + "点"
+        if plmui == "+" {
+            totalTax = totalTax + Int(textImput.text!)!
+        } else {
+            totalTax = totalTax - Int(textImput.text!)!
+        }
+        totalLabel.text = formatter.string(from: totalTax as NSNumber)
+        // 一覧
+        let imputText = Int(textImput.text!)!
+        if plmui == "+" {
+            textView.text = textView.text + "+" + formatter.string(from: imputText as NSNumber)! + "\r\n"
+        } else {
+            textView.text = textView.text + "-" + formatter.string(from: imputText as NSNumber)! + "\r\n"
+        }
+        // 入力エリアのクリア
+        textImput.text = nil
     }
 }
 

@@ -16,6 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var totalCountLabel: UILabel!
     @IBOutlet weak var clearButton: UIBarButtonItem!
     
+    let defaults = UserDefaults.standard
+    let formatter = NumberFormatter()
+  
     var totalTax: Int = 0
     var totalCount: Int = 0
     
@@ -23,6 +26,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         textImput.delegate = self
+        formatter.numberStyle = .decimal
+        if defaults.object(forKey: "totalTax") != nil {
+            totalTax = defaults.integer(forKey: "totalTax")
+            totalLabel.text = formatter.string(from: totalTax as NSNumber)
+        }
+        if defaults.object(forKey: "totalCount") != nil {
+            totalCountLabel.text = String(defaults.integer(forKey: "totalCount")) + "点"
+            totalCount = defaults.integer(forKey: "totalCount")
+        }
+        if defaults.object(forKey: "textView") != nil {
+            textView.text = defaults.string(forKey: "textView")
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         if (self.textImput.isFirstResponder) {
@@ -32,11 +47,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBAction func clearButtonAction(_ sender: Any) {
         totalLabel.text = "0"
-        textView.text = nil
-        totalCountLabel.text = nil
-        textImput.text = nil
+        textView.text = ""
+        totalCountLabel.text = "0点"
+        textImput.text = ""
         totalTax = 0
         totalCount = 0
+        //
+        defaults.removeObject(forKey: "totalTax")
+        defaults.removeObject(forKey: "totalCount")
+        defaults.removeObject(forKey: "textView")
     }
     
     @IBAction func plusAction(_ sender: Any) {
@@ -53,8 +72,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func calculation(plmui: String) {
         textImput.resignFirstResponder()
         
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
         //トータルカウント
         if plmui == "+" {
             totalCount = totalCount + 1
@@ -69,7 +86,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         } else {
             totalTax = totalTax - Int(textImput.text!)!
         }
-        totalLabel.text = formatter.string(from: totalTax as NSNumber)
+        let totalInsert = formatter.string(from: totalTax as NSNumber)
+        totalLabel.text = String(totalInsert!)
         // 一覧
         let imputText = Int(textImput.text!)!
         if plmui == "+" {
@@ -77,6 +95,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         } else {
             textView.text = textView.text + "-" + formatter.string(from: imputText as NSNumber)! + "\r\n"
         }
+        //
+        defaults.set(totalTax, forKey: "totalTax")
+        defaults.set(totalCount, forKey: "totalCount")
+        defaults.set(textView.text, forKey: "textView")
         // 入力エリアのクリア
         textImput.text = nil
     }
